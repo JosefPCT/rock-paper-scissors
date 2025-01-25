@@ -28,6 +28,7 @@ function isValidInput(input){
     return input === "ROCK" || input === "PAPER" || input === "SCISSORS" ? true : false
 }
 
+// function to randomly determine computer choice
 function determineComputerChoice(){
     let x = Math.floor(Math.random() * 3); // to randomize a number between 0 and 2
     switch(x){
@@ -46,11 +47,38 @@ function determineComputerChoice(){
     }
 }
 
+function playRound(userChoice,computerChoice){
+    log(userChoice);
+    log(computerChoice);
+    if(userChoice === computerChoice){
+        log("Tie");
+    } else if(userChoice === "ROCK" && computerChoice === "PAPER"){
+        log("Computer Wins");
+    } else if(userChoice === "ROCK" && computerChoice === "SCISSORS"){
+        log("User Wins");
+    } else if(userChoice === "PAPER" && computerChoice === "ROCK"){
+        log("User Wins")
+    } else if(userChoice === "PAPER" && computerChoice === "SCISSORS" ){
+        log("Computer Wins");
+    } else if(userChoice === "SCISSORS" && computerChoice === "ROCK"){
+        log("Computer Wins");
+    } else if (userChoice === "SCISSORS" && computerChoice === "PAPER"){
+        log("User Wins")
+    } else {
+        log("That's weird");
+    }
+}
+
+let userChoice = askUserChoice();
+let computerChoice = determineComputerChoice();
+
+playRound(userChoice,computerChoice);
+
 
 // let userChoice = askUserChoice();
 // log(userChoice);
 // log(typeof userChoice);
 
-let computerChoice = determineComputerChoice();
-log(computerChoice);
-log(typeof computerChoice);
+// let computerChoice = determineComputerChoice();
+// log(computerChoice);
+// log(typeof computerChoice);
