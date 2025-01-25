@@ -28,8 +28,29 @@ function isValidInput(input){
     return input === "ROCK" || input === "PAPER" || input === "SCISSORS" ? true : false
 }
 
+function determineComputerChoice(){
+    let x = Math.floor(Math.random() * 3); // to randomize a number between 0 and 2
+    switch(x){
+        case 0:
+            return "ROCK";
+            break;
+        case 1:
+            return "PAPER"
+            break;
+        case 2:
+            return "SCISSORS"
+            break;
+        default:
+            console.log("default block");
+        
+    }
+}
 
-let userChoice = askUserChoice();
-log(userChoice);
-log(typeof userChoice);
-//console.log(isValidInput(userChoice));
+
+// let userChoice = askUserChoice();
+// log(userChoice);
+// log(typeof userChoice);
+
+let computerChoice = determineComputerChoice();
+log(computerChoice);
+log(typeof computerChoice);
