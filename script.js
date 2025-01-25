@@ -47,32 +47,78 @@ function determineComputerChoice(){
     }
 }
 
+// game logic
 function playRound(userChoice,computerChoice){
     log(userChoice);
     log(computerChoice);
+ 
     if(userChoice === computerChoice){
         log("Tie");
+        return "Tie";
     } else if(userChoice === "ROCK" && computerChoice === "PAPER"){
         log("Computer Wins");
+        return "Computer";
     } else if(userChoice === "ROCK" && computerChoice === "SCISSORS"){
         log("User Wins");
+        return "User";
     } else if(userChoice === "PAPER" && computerChoice === "ROCK"){
         log("User Wins")
+        return "User";
     } else if(userChoice === "PAPER" && computerChoice === "SCISSORS" ){
         log("Computer Wins");
+        return "Computer"
     } else if(userChoice === "SCISSORS" && computerChoice === "ROCK"){
         log("Computer Wins");
+        return "Computer"
     } else if (userChoice === "SCISSORS" && computerChoice === "PAPER"){
         log("User Wins")
+        return "User"
     } else {
         log("That's weird");
+        return "Weird"
     }
 }
 
-let userChoice = askUserChoice();
-let computerChoice = determineComputerChoice();
 
-playRound(userChoice,computerChoice);
+function playGame(){
+    let userScore = 0;
+    let computerScore = 0;
+    let x = 0;
+    while (x < 5){
+        let userChoice = askUserChoice();
+        let computerChoice = determineComputerChoice();
+        let roundWinner = playRound(userChoice,computerChoice)
+            if (roundWinner === "User"){
+                userScore++;
+                log("User score is:")
+                log(userScore);
+                log("Computer score is:")
+                log(computerScore);
+            } else if (roundWinner === "Computer"){
+                computerScore++;
+                log("User score is:")
+                log(userScore);
+                log("Computer score is:")
+                log(computerScore);
+            } else {
+
+            }
+        x++;
+    } 
+
+    if (userScore > computerScore){
+        log("You won the game!")
+    } else{
+        log("You lost the game")
+    }
+}
+
+playGame();
+
+// let userChoice = askUserChoice();
+// let computerChoice = determineComputerChoice();
+
+// playRound(userChoice,computerChoice);
 
 
 // let userChoice = askUserChoice();
