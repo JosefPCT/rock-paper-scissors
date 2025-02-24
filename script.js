@@ -9,12 +9,20 @@
 //   create a new variable gameWinner, and display it in html
 //
 
-console.log(document.querySelector("button").value);
+let round = 1;
+let userScore = 0;
+let computerScore = 0;
 
+console.log(document.querySelector(".choices"));
 console.log("Hello World");
-
 let log = console.log;
 
+let choices = document.querySelector(".choices")
+choices.addEventListener('click', playGame)
+
+function userPickedChoice(e){
+   return e.target.value.toUpperCase();
+}
 
 /* asks the user choice and also checks if valid, will ask again if not*/
 function askUserChoice(){
@@ -24,7 +32,7 @@ function askUserChoice(){
    // log(typeof userChoice);
    // return isValidInput(userChoice) ? userChoice : askUserChoice();
     if (isValidInput(userChoice)) {
-        return userChoice
+        return userChoicey
     } else{
       alert("Invalid output. Try again")
       return askUserChoice();
@@ -61,6 +69,9 @@ function determineComputerChoice(){
 function playRound(userChoice,computerChoice){
     log(userChoice);
     log(computerChoice);
+
+
+
  
     if(userChoice === computerChoice){
         log("Tie");
@@ -89,16 +100,37 @@ function playRound(userChoice,computerChoice){
     }
 }
 
-
-function playGame(){
-    let userScore = 0;
-    let computerScore = 0;
-    let x = 1;
-    while (x <= 5){
-        log("Round:" + x);
-        let userChoice = askUserChoice();
+function playGame(e){
+        log("Round:" + round);
+        let userChoice = e.target.value.toUpperCase();
         let computerChoice = determineComputerChoice();
         let roundWinner = playRound(userChoice,computerChoice)
+
+        let result = document.querySelector(".result");   
+        let scoreDiv = document.querySelector(".score");
+
+        let newRound = document.createElement("p");
+        newRound.textContent = `Round: ${round}`;
+        let newUserChoice = document.createElement("p");
+        newUserChoice.textContent = `User picked: ${userChoice}`;
+        let newComputerChoice = document.createElement("p");
+        newComputerChoice.textContent = `Computer picked: ${computerChoice}`;
+        let newRoundWinner = document.createElement("p");
+        newRoundWinner.textContent = `Winner: ${roundWinner}`;
+        let newScore = document.createElement("p");
+        newScore.textContent = `User Score: ${userScore}` + ' ' + `Computer Score:  ${computerScore}`;
+        // let newComputerScore = document.createElement("p");
+        // newComputerScore.textContent = `Computer Score: ${computerScore}`;
+
+        result.appendChild(newRound);
+        result.appendChild(newUserChoice);
+        result.appendChild(newComputerChoice);
+        result.appendChild(newRoundWinner);
+        console.log("score div has child nodes?" + scoreDiv.hasChildNodes());
+        if (scoreDiv.hasChildNodes()) { scoreDiv.removeChild(scoreDiv.childNodes[0]); }
+        scoreDiv.appendChild(newScore);
+       // scoreDiv.appendChild(newComputerScore);
+
             if (roundWinner === "User"){
                 userScore++;
                 log("User score is:")
@@ -114,16 +146,18 @@ function playGame(){
             } else {
 
             }
-        x++;
-    } 
+       round++;
 
-    if (userScore === computerScore){
-        log("Tie")
-    } else if (userScore > computerScore) {
-        log("You won the game!")
-    } else {
-        log("You lost the game")
-    }
+       if (round === 6){
+        if (userScore === computerScore){
+            log("Tie")
+        } else if (userScore > computerScore) {
+           log("You won the game!")
+        } else {
+            log("You lost the game")
+        }
+        choices.removeEventListener("click",playGame);
+       }
 }
 
 // playGame();
