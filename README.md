@@ -36,3 +36,5 @@ WHILE user choose to continue playing
 END WHILE 
 
 
+todo:
+-> polish and add text descriptions for readability

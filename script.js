@@ -83,8 +83,9 @@ function playRound(userChoice,computerChoice){
 function playGame(){
     let userScore = 0;
     let computerScore = 0;
-    let x = 0;
-    while (x < 5){
+    let x = 1;
+    while (x <= 5){
+        log("Round:" + x);
         let userChoice = askUserChoice();
         let computerChoice = determineComputerChoice();
         let roundWinner = playRound(userChoice,computerChoice)
@@ -106,9 +107,11 @@ function playGame(){
         x++;
     } 
 
-    if (userScore > computerScore){
+    if (userScore === computerScore){
+        log("Tie")
+    } else if (userScore > computerScore) {
         log("You won the game!")
-    } else{
+    } else {
         log("You lost the game")
     }
 }
