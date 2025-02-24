@@ -1,9 +1,19 @@
+// add event listener for the buttons, use div choices and e.target
+// store the choice to userChoice
+// display results (create html elements and appendChild the result)
+//   display userChoice and computerChoice variables
+//   display roundWinner variable
+// display score
+//   display userScore and computerScore variables
+// display gameWinner
+//   create a new variable gameWinner, and display it in html
+//
+
+console.log(document.querySelector("button").value);
+
 console.log("Hello World");
 
 let log = console.log;
-
-
-
 
 
 /* asks the user choice and also checks if valid, will ask again if not*/
