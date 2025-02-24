@@ -116,7 +116,7 @@ function playGame(){
     }
 }
 
-playGame();
+// playGame();
 
 // let userChoice = askUserChoice();
 // let computerChoice = determineComputerChoice();
