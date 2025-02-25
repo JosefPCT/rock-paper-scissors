@@ -1,3 +1,5 @@
+//polish
+
 // add event listener for the buttons, use div choices and e.target
 // store the choice to userChoice
 // display results (create html elements and appendChild the result)

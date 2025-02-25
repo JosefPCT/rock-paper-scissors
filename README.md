@@ -36,5 +36,6 @@ WHILE user choose to continue playing
 END WHILE 
 
 
-todo:
--> polish and add text descriptions for readability
+TO ADD:
+-> Have icons for each item
+-> Display icon for player selection and computer selected
